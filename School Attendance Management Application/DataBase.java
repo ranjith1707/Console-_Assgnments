@@ -9,7 +9,7 @@ public class DataBase {
 	 Connection connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/attendance_details","root","Ranjithkumar@1705");
 	 statement=connect.createStatement();
 	}catch(Exception e) {
-		
+		System.out.println("SQL Exception");
 	}	
 	return statement;
 	}
