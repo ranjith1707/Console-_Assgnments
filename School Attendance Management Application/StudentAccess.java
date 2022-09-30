@@ -46,7 +46,7 @@ boolean loginCheck(int regNo, String dob) {
 		}
 		
 	} catch (Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 		
 		
 	}
@@ -76,7 +76,7 @@ try {
 
 } catch (SQLException e) {
 	
-	System.out.println("Exception");
+	System.out.println("SQL Exception");
 }
 
 }
