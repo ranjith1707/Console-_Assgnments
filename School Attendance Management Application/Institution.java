@@ -81,7 +81,7 @@ void studentList() {
 		}
 		
 	} catch (Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 		
 	}
 }
@@ -99,7 +99,7 @@ void teacherList() {
 		}
 		
 	} catch (Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 		
 	}
 }
@@ -124,7 +124,7 @@ void studentDetails() {
 		}
 		
 	} catch (Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 		
 	}
 }
@@ -143,7 +143,7 @@ void teacherDetails() {
 		}
 		
 	} catch (Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 		
 	}
 	
@@ -164,7 +164,7 @@ void newAdmission() {
 		Statement statment=data.getData();
 		int n=statment.executeUpdate("Insert into student_details(regNo,name,dob,mobile_number)values("+regNo+",'"+nName+"','"+dob+"','"+mobile+"')");
 	}catch(Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 	}
 }
 void updateAttendance() {
@@ -179,7 +179,7 @@ void updateAttendance() {
 		Statement statment=data.getData();
 		int n=statment.executeUpdate("Insert into student_attendance(regNo,date,status)values("+id+",date(now()),'"+attendance+"')");
 	}catch(Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 	}
 	
 }
@@ -202,7 +202,7 @@ void viewAttendance() {
             System.out.println();
 		}
 	} catch (Exception e) {
-		System.out.println("Exception");
+		System.out.println("SQL Exception");
 		
 	}
 }
