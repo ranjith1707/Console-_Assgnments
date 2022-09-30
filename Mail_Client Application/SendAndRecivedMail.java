@@ -1,8 +1,9 @@
 package MailApplication;
 
-import java.util.Map;
+import java.util.*;
 
-public class SendAndRecivedMail extends MailPage{
+public class SendAndRecivedMail {
+	Scanner scanner=new Scanner(System.in);
 	static int messageId=1;
 	void dashBoard(String id) {
 		System.out.println("_____________________________________________________________________________________________");
@@ -43,11 +44,11 @@ public class SendAndRecivedMail extends MailPage{
 		 String[] recivers=to.split(",");
 		 
 		 
-		 sendMail.get(userId).put(messageId,compose);
+		 MailPage.sendMail.get(userId).put(messageId,compose);
 		 
 		    for(int i=0; i<recivers.length; i++) {
-		    	if(recivedMail.containsKey(recivers[i])) {
-		    	recivedMail.get(recivers[i]).put(messageId,compose);
+		    	if(MailPage.recivedMail.containsKey(recivers[i])) {
+		    	MailPage.recivedMail.get(recivers[i]).put(messageId,compose);
 		    	}
 		    	else {
 		    		System.out.println(recivers[i]+"   User Not Found  !");
@@ -60,9 +61,9 @@ public class SendAndRecivedMail extends MailPage{
 	void inbox(String user) {
 		
 		System.out.println("  INBOX  \n");
-	  if(!recivedMail.get(user).isEmpty()) {
-		for(Map.Entry<Integer,Compose> m:recivedMail.get(user).entrySet()) {
-			System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().from+"   To : "+m.getValue().to+"   Subject : "+m.getValue().subject+"   Subject : "+m.getValue().subject+"   Mail : "+m.getValue().mail);
+	  if(!MailPage.recivedMail.get(user).isEmpty()) {
+		for(Map.Entry<Integer,Compose> m:MailPage.recivedMail.get(user).entrySet()) {
+			System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().getFrom()+"   To : "+m.getValue().getTo()+"   Subject : "+m.getValue().getSubject()+"   Mail : "+m.getValue().getMail());
 			
 		}
 	  }
@@ -76,9 +77,9 @@ public class SendAndRecivedMail extends MailPage{
 	
 	void sended(String user) {
 		System.out.println("    Send Mails  \n");
-		 if(!sendMail.get(user).isEmpty()) {
-				for(Map.Entry<Integer,Compose> m:sendMail.get(user).entrySet()) {
-					System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().from+"   To : "+m.getValue().to+"   Subject : "+m.getValue().subject+"   Subject : "+m.getValue().subject+"   Mail : "+m.getValue().mail);
+		 if(!MailPage.sendMail.get(user).isEmpty()) {
+				for(Map.Entry<Integer,Compose> m:MailPage.sendMail.get(user).entrySet()) {
+					System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().getFrom()+"   To : "+m.getValue().getTo()+"   Subject : "+m.getValue().getSubject()+"   Mail : "+m.getValue().getMail());
 					
 				}
 			  }
@@ -90,16 +91,16 @@ public class SendAndRecivedMail extends MailPage{
 	void deleteInbox(String user) {
 		
 		System.out.println("    Inbox Mail    \n");
-		 if(!recivedMail.get(user).isEmpty()) {
-				for(Map.Entry<Integer,Compose> m:recivedMail.get(user).entrySet()) {
-					System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().from+"   To : "+m.getValue().to+"   Subject : "+m.getValue().subject+"   Subject : "+m.getValue().subject+"   Mail : "+m.getValue().mail);
+		 if(!MailPage.recivedMail.get(user).isEmpty()) {
+				for(Map.Entry<Integer,Compose> m:MailPage.recivedMail.get(user).entrySet()) {
+					System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().getFrom()+"   To : "+m.getValue().getTo()+"   Subject : "+m.getValue().getSubject()+"   Mail : "+m.getValue().getMail());
 		
 					
 				}
 				System.out.print("Enter Message Id :  ");
 				int deleteId=scanner.nextInt();
-				if(recivedMail.get(user).containsKey(deleteId)) {
-					recivedMail.get(user).remove(deleteId);
+				if(MailPage.recivedMail.get(user).containsKey(deleteId)) {
+					MailPage.recivedMail.get(user).remove(deleteId);
 					System.out.println("Mail Deleted    !");
 				}
 				else {
@@ -119,16 +120,16 @@ public class SendAndRecivedMail extends MailPage{
 	void deleteSended(String user) {
 		
 		System.out.println("    Send Mails     ");
-		 if(!sendMail.get(user).isEmpty()) {
-				for(Map.Entry<Integer,Compose> m:sendMail.get(user).entrySet()) {
-					System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().from+"   To : "+m.getValue().to+"   Subject : "+m.getValue().subject+"   Subject : "+m.getValue().subject+"   Mail : "+m.getValue().mail);
+		 if(!MailPage.sendMail.get(user).isEmpty()) {
+				for(Map.Entry<Integer,Compose> m:MailPage.sendMail.get(user).entrySet()) {
+					System.out.println("> Message Id : "+m.getKey()+ "   From : "+m.getValue().getFrom()+"   To : "+m.getValue().getTo()+"   Subject : "+m.getValue().getSubject()+"   Mail : "+m.getValue().getMail());
 					
 				}
 				
 				System.out.print("Enter Message Id :  ");
 				int deleteId=scanner.nextInt();
-				if(sendMail.get(user).containsKey(deleteId)) {
-					sendMail.get(user).remove(deleteId);
+				if(MailPage.sendMail.get(user).containsKey(deleteId)) {
+					MailPage.sendMail.get(user).remove(deleteId);
 					
 					System.out.println("Message Deleted  !");
 				}
